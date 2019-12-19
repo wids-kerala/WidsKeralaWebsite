@@ -91,7 +91,7 @@
                   <v-row class="">
                   <v-col col="12" cols="6" md="2" sm="3" v-for="(item) in props.items" :key="item.name" class="pa-1">
                     <div v-on:click="showTeam(item.id)" style="cursor: pointer;" class="text-center py-3 elevation-1" :class="$vuetify.theme.dark == true?'grey darken-3':'white'">
-        
+                      
                       <v-avatar size="100">
                           <img 
                           :src="getImgUrl(item.image)"
@@ -169,7 +169,8 @@ export default {
       },
       getImgUrl(pic) {
           if(pic.length>0){
-              return require('@/assets/img/team/'+pic)
+            return pic
+              // return require('@/assets/img/team/'+pic)
           }else{
               return require('@/assets/img/common/avatar.png')
           }

@@ -66,8 +66,8 @@
               <v-col col="12" md="3" class="pa-1 elevation-1 py-5" :class="$vuetify.theme.dark == true?'grey darken-4':'white'">
                 <v-avatar size="120">
                     <img 
-                    :src="getImgUrl(search)"
-                    :lazy-src="getImgUrl(search)" alt=""
+                    :src="getImgUrl(teamData.image)"
+                    :lazy-src="getImgUrl(teamData.image)" alt=""
                     >
                 </v-avatar>
                 
@@ -211,7 +211,8 @@ export default {
       },
       getImgUrl(pic) {
           if(pic.length>0){
-              return require('@/assets/img/team/'+pic)
+              return pic
+            //   return require('@/assets/img/team/'+pic)
           }else{
               return require('@/assets/img/common/avatar.png')
           }

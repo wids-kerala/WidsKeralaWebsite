@@ -113,6 +113,59 @@
                         ></v-text-field>
                       </v-col>
 
+                      <v-col md="4" xs="4" cols="12" class="pa-1 ma-0">
+                        <v-text-field
+                            v-model="updatedData.image"
+                            class="ma-0"
+                            label="Image URL"
+                            outlined
+                        ></v-text-field>
+                      </v-col>
+
+                      <!-- Image URL Upload Model -->
+                      <v-col cols="12" sm="6" class="pa-1 ma-0">
+                        <v-dialog v-model="dialogImageUload" max-width="290">
+                          <template v-slot:activator="{ on }">
+                            <v-btn
+                              color="primary"
+                              :loading="imageUploading"
+                              dark
+                              class="mt-n6"
+                              v-on="on"
+                            >Upload Image</v-btn>
+                          </template>
+                          <v-card>
+                            <v-card-title>Upload Team Image</v-card-title>
+                            <v-card-text>
+                              <v-img :src="imagePre" class="mb-6"></v-img>
+
+                              <v-file-input
+                                v-model="imageUpload"
+                                accept="image/*"
+                                label="File input"
+                                prepend-icon
+                                @change="onFileChange"
+                                outlined
+                              ></v-file-input>
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn
+                                color="green darken-1"
+                                text
+                                @click="dialogImageUload = false"
+                              >Disagree</v-btn>
+                              <v-btn color="green darken-1" text @click="uploadImage">Agree</v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                      </v-col>
+                      <!-- Image URL Upload Model -->
+
+                      <v-col md="4" xs="12" cols="12" class="pa-1 ma-0 red">
+                        <v-img :src="updatedData.image" class="mt-n7"></v-img>
+                      </v-col>
+
 
                       <v-col md="12" xs="12" cols="12" class="pa-1 ma-0">
                         <v-textarea
@@ -254,13 +307,18 @@
 <script>
 import firebase from 'firebase/app'
 import { firestore } from 'firebase';
+import { storage } from 'firebase';
   export default {
     props:{
         teamData:{}
     },
     data () {
       return {
+        imageUpload: [],
+        imagePre: "",
+        imageUploading: false,
         valid: true,
+        dialogImageUload: false,
         nameRules: [
             v => !!v || 'Name is required',
             v => (v && v.length <= 20) || 'Name must be less than 10 characters',
@@ -286,6 +344,7 @@ import { firestore } from 'firebase';
         twitter:'',
         web:'',
         bio:'',
+        imageURL:'',
         image:'',
         designation:'',
         role:null,
@@ -312,6 +371,28 @@ import { firestore } from 'firebase';
       }
     },
     methods:{
+      onFileChange() {
+        let reader = new FileReader();
+        reader.readAsDataURL(this.imageUpload);
+        reader.onload = () => {
+          this.imagePre = reader.result;
+        };
+      },
+      uploadImage() {
+        this.imageUploading = true;
+        var fileName = `${this.userId}.${this.imageUpload.name.split(".")[1]}`;
+        console.log(fileName);
+        var refLink = firebase.storage().ref("team/" + fileName);
+        refLink.put(this.imageUpload).then(file => {
+          refLink.getDownloadURL().then(a => {
+            console.log(a);
+            this.imageURL = a;
+            this.imageUploading = false;
+            this.uploadImage = "Uploaded";
+          });
+        });
+        this.dialogImageUload = false;
+      },
         UpdateData(){
             var self =this
             self.loading = true

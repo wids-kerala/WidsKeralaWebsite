@@ -53,6 +53,7 @@
                             outlined
                           ></v-text-field>
                         </v-col>
+
                         <v-col cols="12" sm="6" class="pa-1 ma-0">
                           <v-dialog v-model="dialogImageUload" max-width="290">
                             <template v-slot:activator="{ on }">
@@ -90,11 +91,15 @@
                             </v-card>
                           </v-dialog>
                         </v-col>
+
+                        
                       </v-row>
                     </v-col>
+
                     <v-col cols="12" sm="4" md="2">
                       <v-img :src="imageURL" class="mt-n7"></v-img>
                     </v-col>
+
                     <v-col cols="12" md="10" class="pa-1 ma-0">
                       <v-textarea outlined v-model="bio" label="Bio"></v-textarea>
                     </v-col>

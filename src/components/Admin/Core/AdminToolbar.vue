@@ -2,11 +2,9 @@
 <template>
     <v-app-bar
       app
-      color="deep-purple accent-4"
       fixed
       
       clipped-left
-      dark
     >
       <v-app-bar-nav-icon class=""
       @click="ADtoggleDrawer"></v-app-bar-nav-icon>
@@ -15,7 +13,7 @@
         <v-container fluid>
           <v-row align="center">
             <v-col >
-              <router-link :to="{ name: 'dashboard'}" class="google-font" style="text-decoration:none;font-size:110%;color:white" >{{communitydata.CommunityName}}</router-link>
+              <router-link :to="{ name: 'dashboard'}" class="google-font" style="text-decoration:none;font-size:110%;" >{{communitydata.CommunityName}}</router-link>
             </v-col>
           </v-row>
         </v-container>
