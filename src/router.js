@@ -24,7 +24,7 @@ const router = new Router({
     },
     {
       path: '/home',
-      name: 'home',
+      name: 'home-alternative',
       component: Home,
       meta:{
         title:'Home | '+communitydata.CommunityName,
@@ -144,7 +144,7 @@ const router = new Router({
     },
     {
       path:'/admin/dashboard/team',
-      name:"admin-events",
+      name:"admin-team",
       component:()=> import('@/views/Admin/Team'),
       meta:{
         title:`Admin Dashboard | ${communitydata.CommunityName}`,
@@ -164,7 +164,7 @@ const router = new Router({
     },
     {
       path:'/admin/dashboard/speaker',
-      name:"admin-events",
+      name:"admin-speakers",
       component:()=> import('@/views/Admin/Speaker'),
       meta:{
         title:`Admin Dashboard | ${communitydata.CommunityName}`,

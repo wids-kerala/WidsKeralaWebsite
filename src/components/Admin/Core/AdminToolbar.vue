@@ -13,7 +13,7 @@
         <v-container fluid>
           <v-row align="center">
             <v-col >
-              <router-link :to="{ name: 'dashboard'}" class="google-font" style="text-decoration:none;font-size:110%;" >{{communitydata.CommunityName}}</router-link>
+              <router-link :to="{ name: 'admin-dashhboard'}" class="google-font" style="text-decoration:none;font-size:110%;" >{{communitydata.CommunityName}}</router-link>
             </v-col>
           </v-row>
         </v-container>

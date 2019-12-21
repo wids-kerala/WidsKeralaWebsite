@@ -91,8 +91,6 @@
                             </v-card>
                           </v-dialog>
                         </v-col>
-
-                        
                       </v-row>
                     </v-col>
 
@@ -202,7 +200,7 @@ export default {
     twitter: "",
     medium: "",
     website: "",
-    addSpeakerLoading:false,
+    addSpeakerLoading: false
   }),
   methods: {
     onFileChange() {
@@ -218,6 +216,7 @@ export default {
       console.log(fileName);
       var refLink = firebase.storage.ref("speakers/" + fileName);
       refLink.put(this.imageUpload).then(file => {
+        console.log(file);
         refLink.getDownloadURL().then(a => {
           console.log(a);
           this.imageURL = a;
@@ -228,7 +227,7 @@ export default {
       this.dialogImageUload = false;
     },
     saveData() {
-        this.addSpeakerLoading = true
+      this.addSpeakerLoading = true;
       var Data = {
         visible: this.visible,
         id: this.userId,
@@ -240,9 +239,9 @@ export default {
         bio: this.bio,
         city: this.city,
         country: this.country,
-        company:{
-            name: this.companyName,
-            url: this.companyURL
+        company: {
+          name: this.companyName,
+          url: this.companyURL
         },
         socialLinks: {
           facebook: this.facebook,
@@ -253,13 +252,19 @@ export default {
           web: this.website
         }
       };
-      firebase.firestore.collection('speakers').doc(Data.id).set(Data).then(res=>{
-                    this.dialog = false;
-                    this.addSpeakerLoading = false
-                    this.$emit('showSuccess',true)
-                }).catch(e=>{
-                    console.log(e)
-                })
+      firebase.firestore
+        .collection("speakers")
+        .doc(Data.id)
+        .set(Data)
+        .then(res => {
+          console.log(res);
+          this.dialog = false;
+          this.addSpeakerLoading = false;
+          this.$emit("showSuccess", true);
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
   }
 };

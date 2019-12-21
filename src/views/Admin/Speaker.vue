@@ -61,6 +61,7 @@
                           v-ripple
                           class="text-center py-3 elevation-1"
                           :class="$vuetify.theme.dark == true?'grey darken-3':'white'"
+                          @click="gotoSpeaker(item.id)"
                         >
                           <v-avatar size="100">
                             <img :src="item.image" alt />
@@ -110,6 +111,9 @@ export default {
     }
   },
   methods: {
+    gotoSpeaker(id){
+        this.$router.replace('/admin/dashboard/speaker/'+id)
+      },
     success(e){
       console.log(e);
       this.snackbarSuccess = true;
@@ -118,7 +122,6 @@ export default {
     showData() {
       this.speakerLoader = true;
       this.speakerData = [];
-      console.log("Calling Show Data");
       firebase.firestore
         .collection("speakers")
         .get()
