@@ -1,17 +1,8 @@
 <template>
   <v-content :class="$vuetify.theme.dark == true?'blank':'grey lighten-5'">
-    <v-snackbar
-      :timeout="5000"
-      v-model="snackbarSuccess"
-      >
-          Speaker Added Successfully
-          <v-btn
-              color="pink"
-              text
-              @click="snackbarSuccess = false"
-          >
-              Close
-          </v-btn>
+    <v-snackbar :timeout="5000" v-model="isSnackbar" bottom right>
+      {{ snackBarText }}
+      <v-btn color="pink" text @click="isSnackbar = false">Close</v-btn>
     </v-snackbar>
     <v-container fluid class="text-center">
       <v-row justify="center" align="center">
@@ -71,7 +62,10 @@
                             class="mt-0 mb-0 google-font mt-0"
                             style="font-size:70%"
                           >{{item.designation}}</p>
-                          <p class="mt-0 mb-0 google-font mt-0" style="font-size:80%">{{item.company.name}}</p>
+                          <p
+                            class="mt-0 mb-0 google-font mt-0"
+                            style="font-size:80%"
+                          >{{item.company.name}}</p>
                         </div>
                       </v-col>
                     </v-row>
@@ -101,8 +95,15 @@ export default {
     speakerData: [],
     loading: true,
     speakerLoader: true,
-    snackbarSuccess:false
+    isSnackbar: false,
+    snackBarText:"",
   }),
+  created() {
+    if (this.$route.query.msg) {
+      this.isSnackbar = true;
+      this.snackBarText = "Speaker Removed Successfully"
+    }
+  },
   mounted() {
     if (firebase.auth.currentUser) {
       this.showData();
@@ -111,13 +112,14 @@ export default {
     }
   },
   methods: {
-    gotoSpeaker(id){
-        this.$router.replace('/admin/dashboard/speaker/'+id)
-      },
-    success(e){
-      console.log(e);
-      this.snackbarSuccess = true;
-      this.showData()
+    gotoSpeaker(id) {
+      this.$router.replace("/admin/dashboard/speaker/" + id);
+    },
+    success() {
+      this.isSnackbar = true;
+      this.snackBarText = "Speaker Added Successfully",
+      
+      this.showData();
     },
     showData() {
       this.speakerLoader = true;

@@ -13,18 +13,8 @@
               <v-icon left>mdi-arrow-left-thick</v-icon>Speakers
             </router-link>&nbsp;
             <div class="flex-grow-1"></div>
-            <!-- <editTeam :teamData="teamData" v-on:editedSuccess="editedSuccessFun" class="mr-2" v-if="showTeamData"/> -->
             &nbsp;
-            <!-- <removeTeam class="mr-1" v-if="showTeamData" :teamData="{id:$route.params.id,name:teamData.name}" /> -->
-
-            <!-- <v-tooltip bottom v-if="showTeamData">
-                        <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" target="_blank" v-on:click="showPublicURL($route.params.id)">
-                            <v-icon color="indigo">mdi-eye</v-icon>
-                            </v-btn>
-                        </template>
-                        <span>Show Public URL</span>
-            </v-tooltip>-->
+            <removeSpeakers class="mr-1" v-if="!isLoading && isSpeakerFound" :speakerData="{id:$route.params.id,name:speaker.name}" />
           </v-toolbar>
           <!-- {{$route.params.id }} -->
         </v-col>
@@ -35,11 +25,11 @@
         </v-col>
       </v-row>
       <v-row justify="center" align="center" class v-else-if="!isLoading && isSpeakerFound">
-        <v-col cols="12" md="11" class>
+        <v-col cols="12" md="11">
           <v-container fluid>
             <v-row>
               <v-col
-                col="12"
+                cols="12"
                 md="3"
                 class="pa-1 elevation-1 py-5"
                 :class="$vuetify.theme.dark == true?'grey darken-4':'white'"
@@ -63,15 +53,10 @@
                 <br />
                 <v-chip class="ma-1" v-if="speaker.visible" dark label color="green" small>Visible</v-chip>
                 <v-chip class="ma-1" v-else label dark color="red" small>Not Visible</v-chip>
-
-                <br />
-                <br />
-
-                <br />
               </v-col>
 
               <v-col
-                col="12"
+                cols="12"
                 md="9"
                 class="elevation-1 py-5 text-left pa-5"
                 :class="$vuetify.theme.dark == true?'grey darken-4':'white'"
@@ -135,15 +120,27 @@
 </template>
 
 <script>
+import removeSpeakers from '@/components/Admin/Speaker/removeSpeakers'
+
 import firebase from "@/firebase";
 
 export default {
   name: "viewSpeakers",
+  components:{
+    removeSpeakers
+  },
   data: () => ({
     speaker: {},
     isLoading: false,
     isSpeakerFound: true
   }),
+  mounted(){
+        if(firebase.auth.currentUser){
+          console.log('found')
+        }else{
+            this.$router.replace('/admin')
+        }
+    },
   created() {
     this.isLoading = true;
     firebase.firestore
@@ -151,13 +148,10 @@ export default {
       .doc(this.$route.params.id)
       .get()
       .then(res => {
-        // console.log(res);
         if (res.exists) {
-          // console.log(res.data())
           this.speaker = res.data();
           this.isLoading = false;
         } else {
-          // console.log("No User Found")
           this.isSpeakerFound = false;
           this.isLoading = false;
         }
