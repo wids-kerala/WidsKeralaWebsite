@@ -72,10 +72,6 @@ export default {
                   .getToken()
                   .then(currentToken => {
                     if (currentToken) {
-                      localStorage.setItem(
-                        "pushNotificationToken",
-                        currentToken
-                      );
                       firebase.firestore
                         .collection("apiEnd")
                         .add({
@@ -84,6 +80,10 @@ export default {
                         .then(() => {
                           this.token = currentToken;
                           alert("SuccessFully Subscribed");
+                          localStorage.setItem(
+                            "pushNotificationToken",
+                            currentToken
+                          );
                           this.isLoading = false;
                           this.buttonText = "Allowed";
                         })
