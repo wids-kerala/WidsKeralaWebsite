@@ -21,5 +21,6 @@ export default {
     messaging: firebase.messaging(),
     firestore: firebase.firestore(),
     auth:firebase.auth(),
-    storage:firebase.storage()
+    storage:firebase.storage(),
+    notificationSupported:firebase.messaging.isSupported()
   };

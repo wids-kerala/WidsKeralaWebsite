@@ -58,7 +58,7 @@ export default {
   methods: {
     requestPermission() {
       try {
-        if (firebase.messaging.isSupported() && Notification) {
+        if (firebase.notificationSupported && Notification) {
           firebase.messaging.usePublicVapidKey(
             "BL1bXSTTWszcfqVmCS08tibdCdy3MTCKwovqgCx-oF8wu9tll8iRwhGOypGAkhAzB7EdbfxXH-yEPgBmixKubI0"
           );
@@ -110,7 +110,8 @@ export default {
           });
         }
       } catch (err) {
-        alert(err);
+        // alert(err);
+        console.log(err);
       }
     }
   },
