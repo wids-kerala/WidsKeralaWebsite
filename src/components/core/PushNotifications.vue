@@ -57,62 +57,62 @@ export default {
 
   methods: {
     requestPermission() {
-      // try {
-      //   if (firebase.notificationSupported && Notification) {
-      //     firebase.messaging.usePublicVapidKey(
-      //       "BL1bXSTTWszcfqVmCS08tibdCdy3MTCKwovqgCx-oF8wu9tll8iRwhGOypGAkhAzB7EdbfxXH-yEPgBmixKubI0"
-      //     );
-      //     this.isLoading = true;
-      //     this.token = "Please wait...";
-      //     Notification.requestPermission().then(permission => {
-      //       if (permission === "granted") {
-      //         let token = localStorage.getItem("pushNotificationToken");
-      //         if (token == null || token.length <= 0) {
-      //           firebase.messaging
-      //             .getToken()
-      //             .then(currentToken => {
-      //               if (currentToken) {
-      //                 firebase.firestore
-      //                   .collection("apiEnd")
-      //                   .add({
-      //                     token: currentToken
-      //                   })
-      //                   .then(() => {
-      //                     this.token = currentToken;
-      //                     alert("SuccessFully Subscribed");
-      //                     localStorage.setItem(
-      //                       "pushNotificationToken",
-      //                       currentToken
-      //                     );
-      //                     this.isLoading = false;
-      //                     this.buttonText = "Allowed";
-      //                   })
-      //                   .catch(err => {
-      //                     this.token = err;
-      //                     this.isLoading = false;
-      //                   });
-      //               } else {
-      //                 this.token =
-      //                   "No Instance ID token available. Request permission to generate one.";
-      //               }
-      //             })
-      //             .catch(err => {
-      //               this.token = err;
-      //             });
-      //         } else {
-      //           this.token = token;
-      //           this.buttonText = "Allowed";
-      //         }
-      //       } else {
-      //         this.token = "Unable to get permission to notify.";
-      //       }
-      //       this.isLoading = false;
-      //     });
-      //   }
-      // } catch (err) {
-      //   // alert(err);
-      //   console.log(err);
-      // }
+      try {
+        if (firebase.notificationSupported && Notification) {
+          firebase.messaging.usePublicVapidKey(
+            "BL1bXSTTWszcfqVmCS08tibdCdy3MTCKwovqgCx-oF8wu9tll8iRwhGOypGAkhAzB7EdbfxXH-yEPgBmixKubI0"
+          );
+          this.isLoading = true;
+          this.token = "Please wait...";
+          Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+              let token = localStorage.getItem("pushNotificationToken");
+              if (token == null || token.length <= 0) {
+                firebase.messaging
+                  .getToken()
+                  .then(currentToken => {
+                    if (currentToken) {
+                      firebase.firestore
+                        .collection("apiEnd")
+                        .add({
+                          token: currentToken
+                        })
+                        .then(() => {
+                          this.token = currentToken;
+                          alert("SuccessFully Subscribed");
+                          localStorage.setItem(
+                            "pushNotificationToken",
+                            currentToken
+                          );
+                          this.isLoading = false;
+                          this.buttonText = "Allowed";
+                        })
+                        .catch(err => {
+                          this.token = err;
+                          this.isLoading = false;
+                        });
+                    } else {
+                      this.token =
+                        "No Instance ID token available. Request permission to generate one.";
+                    }
+                  })
+                  .catch(err => {
+                    this.token = err;
+                  });
+              } else {
+                this.token = token;
+                this.buttonText = "Allowed";
+              }
+            } else {
+              this.token = "Unable to get permission to notify.";
+            }
+            this.isLoading = false;
+          });
+        }
+      } catch (err) {
+        // alert(err);
+        console.log(err);
+      }
     }
   },
   mounted() {

@@ -18,9 +18,9 @@ var config = {
 firebase.initializeApp(config);
 
 export default {
-    messaging: firebase.messaging(),
+    notificationSupported:firebase.messaging.isSupported(),
+    messaging: (firebase.messaging.isSupported())?firebase.messaging():null,
     firestore: firebase.firestore(),
     auth:firebase.auth(),
     storage:firebase.storage(),
-    notificationSupported:firebase.messaging.isSupported()
   };
