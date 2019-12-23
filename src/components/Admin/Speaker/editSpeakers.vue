@@ -12,7 +12,7 @@
     </template>
 
     <v-card v-if="dialog">
-      <v-card-title class="headline white" primary-title>Edit {{speakerData.name}} Details</v-card-title>
+      <v-card-title class="headline" primary-title>Edit {{speakerData.name.split(" ")[0]}}'s Details</v-card-title>
 
       <v-card-text class>
         <v-container fluid class="pa-0">
@@ -299,7 +299,7 @@ export default {
         .doc(this.updatedData.id)
         .update({
           visible: this.updatedData.visible,
-          id: this.updatedData.id,
+          id: this.speakerData.id,
           name: this.updatedData.name,
           designation: this.updatedData.designation,
           mbnumber: this.updatedData.mbnumber,
