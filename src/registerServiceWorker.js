@@ -13,7 +13,9 @@ if (process.env.NODE_ENV === 'production') {
     },
     registered ( registration) {
       console.log('Service worker has been registered.')
-      firebase.messaging.useServiceWorker(registration)
+      // if(firebase.notificationSupported && Notification){
+      //   firebase.messaging.useServiceWorker(registration)
+      // }
       setInterval(() => {
         registration.update();
       }, 1000 * 60 * 60); // hourly checks
