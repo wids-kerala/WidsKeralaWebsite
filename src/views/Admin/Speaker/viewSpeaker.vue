@@ -49,7 +49,7 @@
                 :class="$vuetify.theme.dark == true?'grey darken-4':'white'"
               >
                 <v-avatar size="120">
-                  <img :src="speaker.image" :alt="speaker.name" />
+                  <img :src="(speaker.image.length>0)?speaker.image:require('@/assets/img/common/avatar.png')" :alt="speaker.name" />
                 </v-avatar>
 
                 <p

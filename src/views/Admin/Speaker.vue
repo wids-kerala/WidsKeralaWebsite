@@ -55,7 +55,7 @@
                           @click="gotoSpeaker(item.id)"
                         >
                           <v-avatar size="100">
-                            <img :src="item.image" alt />
+                            <img :src="(item.image.length>0)?item.image:require('@/assets/img/common/avatar.png')" alt />
                           </v-avatar>
                           <p class="mt-3 mb-0 google-font mb-0" style="font-size:120%">{{item.name}}</p>
                           <p
