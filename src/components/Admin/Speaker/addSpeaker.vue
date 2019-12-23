@@ -108,7 +108,7 @@
                     </v-col>
                     <v-col cols="12" md="6" class="pa-1 ma-0">
                       <v-text-field
-                        v-model="contactNumber"
+                        v-model="mbnumber"
                         label="Contact Number"
                         type="tel"
                         outlined
@@ -188,7 +188,7 @@ export default {
     imageUploading: false,
     bio: "",
     imageUpload: [],
-    contactNumber: "",
+    mbnumber: "",
     email: "",
     companyName: "",
     companyURL: "",
@@ -233,7 +233,7 @@ export default {
         id: this.userId,
         name: this.name,
         designation: this.desigination,
-        mbnumber: this.contactNumber,
+        mbnumber: this.mbnumber,
         email: this.email,
         image: this.imageURL,
         bio: this.bio,

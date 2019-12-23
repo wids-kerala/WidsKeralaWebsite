@@ -1,5 +1,9 @@
 <template>
   <v-content :class="$vuetify.theme.dark == true?'blank':'grey lighten-5'">
+    <v-snackbar :timeout="5000" v-model="snackbarSuccess" bottom right>
+      Speaker Edited Successfully
+      <v-btn color="pink" text @click="snackbarSuccess = false">Close</v-btn>
+    </v-snackbar>
     <v-container fluid class="text-center">
       <v-row justify="center" align="center">
         <v-col cols="12" md="11">
@@ -10,11 +14,21 @@
               class="ma-0 google-font mb-0"
               style="border-radius:5px;text-transform: capitalize;text-decoration:none;"
             >
-              <v-icon left>mdi-arrow-left-thick</v-icon>Speakers
-            </router-link>&nbsp;
-            <div class="flex-grow-1"></div>
-            &nbsp;
-            <removeSpeakers class="mr-1" v-if="!isLoading && isSpeakerFound" :speakerData="{id:$route.params.id,name:speaker.name}" />
+              <v-icon left>mdi-arrow-left-thick</v-icon>
+              <span :class="$vuetify.theme.dark == true?'white--text':'black--text'">Speakers</span>
+            </router-link>
+            <v-spacer></v-spacer>
+            <editSpeaker
+              class="mr-5"
+              v-if="!isLoading && isSpeakerFound"
+              :speakerData="speaker"
+              @showEditSuccess="editSuccessFunction"
+            />
+            <removeSpeakers
+              class="mr-5"
+              v-if="!isLoading && isSpeakerFound"
+              :speakerData="{id:$route.params.id,name:speaker.name}"
+            />
           </v-toolbar>
           <!-- {{$route.params.id }} -->
         </v-col>
@@ -47,7 +61,12 @@
                   style="font-size:100%"
                 >{{speaker.designation}}</p>
 
-                <v-chip class="mt-2" :href="speaker.company.url" target="_blank" small>{{speaker.company.name}}</v-chip>
+                <v-chip
+                  class="mt-2"
+                  :href="speaker.company.url"
+                  target="_blank"
+                  small
+                >{{speaker.company.name}}</v-chip>
 
                 <br />
                 <br />
@@ -78,7 +97,9 @@
                 <p class="mb-0 mt-3">
                   <b>Location</b>
                 </p>
-                <p class="mt-0 mb-0 google-font greyText mt-0">{{speaker.city}}, {{ speaker.country }}</p>
+                <p
+                  class="mt-0 mb-0 google-font greyText mt-0"
+                >{{speaker.city}}, {{ speaker.country }}</p>
 
                 <p class="mb-0 mt-3">
                   <b>User ID</b>
@@ -120,42 +141,54 @@
 </template>
 
 <script>
-import removeSpeakers from '@/components/Admin/Speaker/removeSpeakers'
+import removeSpeakers from "@/components/Admin/Speaker/removeSpeakers";
+import editSpeaker from "@/components/Admin/Speaker/editSpeakers";
 
 import firebase from "@/firebase";
 
 export default {
   name: "viewSpeakers",
-  components:{
-    removeSpeakers
+  components: {
+    removeSpeakers,
+    editSpeaker
   },
   data: () => ({
     speaker: {},
-    isLoading: false,
-    isSpeakerFound: true
+    isLoading: true,
+    isSpeakerFound: true,
+    snackbarSuccess: false
   }),
-  mounted(){
-        if(firebase.auth.currentUser){
-          console.log('found')
-        }else{
-            this.$router.replace('/admin')
-        }
+  mounted() {
+    if (firebase.auth.currentUser) {
+      console.log("found");
+    } else {
+      this.$router.replace("/admin");
+    }
+  },
+  methods: {
+    editSuccessFunction() {
+      this.snackbarSuccess = true;
+      this.loadData();
     },
+    loadData(){
+      this.isLoading = true;
+      firebase.firestore
+        .collection("speakers")
+        .doc(this.$route.params.id)
+        .get()
+        .then(res => {
+          if (res.exists) {
+            this.speaker = res.data();
+            this.isLoading = false;
+          } else {
+            this.isSpeakerFound = false;
+            this.isLoading = false;
+          }
+        });
+    }
+  },
   created() {
-    this.isLoading = true;
-    firebase.firestore
-      .collection("speakers")
-      .doc(this.$route.params.id)
-      .get()
-      .then(res => {
-        if (res.exists) {
-          this.speaker = res.data();
-          this.isLoading = false;
-        } else {
-          this.isSpeakerFound = false;
-          this.isLoading = false;
-        }
-      });
+    this.loadData();
   }
 };
 </script>
