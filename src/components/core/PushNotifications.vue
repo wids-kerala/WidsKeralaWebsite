@@ -111,6 +111,7 @@ export default {
         }
       } catch (err) {
         // alert(err);
+            this.isLoading = false;
         console.log(err);
       }
     }

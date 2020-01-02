@@ -43,6 +43,15 @@ export default new Vuex.Store({
           showToolbar: false,
           showBottomNav: true
         }, 
+      },
+      { 
+        text: 'PushNotifications', 
+        to: '/admin/dashboard/pushNotification', 
+        icon: 'mdi-bell-ring', 
+        meta:{
+          showToolbar: false,
+          showBottomNav: true
+        }, 
       }
     ],
     items: [ 

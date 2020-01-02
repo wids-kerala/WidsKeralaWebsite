@@ -183,6 +183,16 @@ const router = new Router({
       }
     },
     {
+      path:'/admin/dashboard/pushNotification',
+      name:"PushNotifications",
+      component:()=> import('@/views/Admin/PushNotifications'),
+      meta:{
+        title:`Admin Dashboard | ${communitydata.CommunityName}`,
+        color:"#0277bd",
+        requiresAuth: true,
+      }
+    },
+    {
       path: '*',
       name: 'redirect',
       redirect: { path: '/' },

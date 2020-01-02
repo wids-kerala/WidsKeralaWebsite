@@ -39,7 +39,6 @@
                   <template v-slot:default="props">
                     <v-row align="center">
                       <v-col
-                        col="12"
                         cols="6"
                         md="2"
                         sm="3"
@@ -113,7 +112,7 @@ export default {
   },
   methods: {
     gotoSpeaker(id) {
-      this.$router.replace("/admin/dashboard/speaker/" + id);
+      this.$router.go("/admin/dashboard/speaker/" + id);
     },
     success() {
       this.isSnackbar = true;
@@ -137,6 +136,8 @@ export default {
         })
         .catch(err => {
           console.log("Error getting documents", err);
+          this.speakerLoader = false;
+          this.loading = false;
         });
     }
   }
