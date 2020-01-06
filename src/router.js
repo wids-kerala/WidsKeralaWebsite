@@ -193,6 +193,16 @@ const router = new Router({
       }
     },
     {
+      path:'/admin/dashboard/config/web',
+      name:"WebConfig",
+      component:()=> import('@/views/Admin/WebConfig'),
+      meta:{
+        title:`Admin Dashboard | ${communitydata.CommunityName}`,
+        color:"#0277bd",
+        requiresAuth: true,
+      }
+    },
+    {
       path: '*',
       name: 'redirect',
       redirect: { path: '/' },

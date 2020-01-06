@@ -52,7 +52,17 @@ export default new Vuex.Store({
           showToolbar: false,
           showBottomNav: true
         }, 
+      },
+      { 
+        text: 'Web Config', 
+        to: '/admin/dashboard/config/web', 
+        icon: 'mdi-web', 
+        meta:{
+          showToolbar: false,
+          showBottomNav: true
+        }, 
       }
+      
     ],
     items: [ 
       { 
