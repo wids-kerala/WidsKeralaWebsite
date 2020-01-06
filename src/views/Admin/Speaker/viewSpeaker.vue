@@ -8,15 +8,16 @@
       <v-row justify="center" align="center">
         <v-col cols="12" md="11">
           <v-toolbar class="elevation-1">
-            <router-link
-              to="/admin/dashboard/speaker/"
+            <v-btn
+            text
+              @click="goToHome"
               :color="$vuetify.theme.dark == true?'white':'black'"
               class="ma-0 google-font mb-0"
               style="border-radius:5px;text-transform: capitalize;text-decoration:none;"
             >
               <v-icon left>mdi-arrow-left-thick</v-icon>
               <span :class="$vuetify.theme.dark == true?'white--text':'black--text'">Speakers</span>
-            </router-link>
+            </v-btn>
             <v-spacer></v-spacer>
             <editSpeaker
               class="mr-5"
@@ -166,6 +167,9 @@ export default {
     }
   },
   methods: {
+    goToHome(){
+      this.$router.replace("/admin/dashboard/speaker/");
+    },
     editSuccessFunction() {
       this.snackbarSuccess = true;
       this.loadData();

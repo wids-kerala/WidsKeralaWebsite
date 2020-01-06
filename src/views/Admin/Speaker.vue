@@ -112,7 +112,7 @@ export default {
   },
   methods: {
     gotoSpeaker(id) {
-      this.$router.go("/admin/dashboard/speaker/" + id);
+      this.$router.push("/admin/dashboard/speaker/" + id);
     },
     success() {
       this.isSnackbar = true;
