@@ -21,8 +21,8 @@
           style="font-weight: 350;font-size:230%"
         >
           <b>
-            Make good things
-            <span style="color: #1a73e8;">together</span>.
+            Empowered Women
+            <span style="color: #28bd17;">Empower All</span>.
           </b>
         </p>
         <p class="google-font mt-0 mb-0" style="font-size:150%">{{config.generalConfig.name}}</p>
@@ -56,7 +56,7 @@
           aria-label="Learn More"
           rounded
           rel="noreferrer"
-          color="cyan"
+          color="#28bd17"
           style="text-transform: capitalize;border-radius:5px;text-transform: capitalize;"
           outlined
           class="ml-0"

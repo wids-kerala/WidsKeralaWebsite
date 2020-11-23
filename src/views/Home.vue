@@ -18,7 +18,7 @@
     </v-container>
 
     <v-container fluid class="pa-0 pt-5 my-0" >
-      <v-row justify="center" align="center" style="background:#4C4A78" class="py-5 my-0">
+      <v-row justify="center" align="center" style="background:linear-gradient(#53900F,#0e5c17, #021f05)" class="py-5 my-0">
         <v-col md="12" lg="10" sm="11" xs="12" class="py-0" >
           <AboutCommunity />
         </v-col>
@@ -34,7 +34,7 @@
     </v-container>
 
     <v-container fluid class="pa-0 py-0" v-if="showFeatureEventStatus">
-      <v-row justify="center" align="center" class="py-5" :class="this.$vuetify.theme.dark == true?'grey darken-4':'grey lighten-4'">
+      <v-row justify="center" align="center" class="py-5" :class="this.$vuetify.theme.dark == true?'#222629':'grey lighten-4'">
         <v-col md="12" sm="11" lg="10" xs="12" class="py-0">
           <featureEvents />
         </v-col>
@@ -104,7 +104,7 @@ export default {
       border-radius:5px
   }
   .darkModeContainer{
-      background-color:#292929;
+      background-color:#222629;
       border:1px solid #212121;
       border-radius:5px
   }

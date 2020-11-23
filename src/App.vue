@@ -15,7 +15,7 @@
       <v-container class="fill-height">
         <v-row justify="center" align="center" class>
           <v-col cols="12" md="12" class="text-center">
-            <v-progress-circular :width="5" :size="50" color="indigo" indeterminate></v-progress-circular>
+            <v-progress-circular :width="5" :size="50" color="#00f500" indeterminate></v-progress-circular>
           </v-col>
         </v-row>
       </v-container>

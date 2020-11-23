@@ -9,8 +9,8 @@ module.exports = {
   pwa: {
     name: 'wids-kerala',
     workboxPluginMode: 'InjectManifest',
-    themeColor: '#4A90E2',
-    msTileColor: '#4A90E2',
+    themeColor: '#28bd17',
+    msTileColor: '#28bd172',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     manifestOptions: {
