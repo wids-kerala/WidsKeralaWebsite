@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site":"myaurapp",
+    "site":"wids-kerala",
     "public": "dist",
     "rewrites": [ {
         "source": "**",
