@@ -4,7 +4,7 @@
       <v-col cols="12" md="12" lg="12" sm="12" class="pa-0" style="color:white">
         <div class="ma-1">
           <div class="pa-5">
-            <p class="google-font mb-0" style="font-size:150%">About {{config.generalConfig.name}}</p>
+            <p class="google-font mb-0" style="font-size:150%">About WiDS Kerala{{config.generalConfig.name}}</p>
             <p
               class="google-font mt-0"
               style="font-size:95%"
@@ -18,7 +18,7 @@
               class="ma-0 google-font mb-2"
               style="border-radius:5px;text-transform: capitalize;color:white"
             >Meetup Page</v-btn>&nbsp;
-            <br />
+            <!--<br />  -->
             <router-link
               to="/about"
               class="google-font"

@@ -9,7 +9,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "home" */ '../views/Home.vue'),
     meta: {
       title: 'Home ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -18,7 +18,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/About.vue'),
     meta: {
       title: 'About ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -27,7 +27,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "team" */ '../views/Team.vue'),
     meta: {
       title: 'Team ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -36,7 +36,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "team-details" */ '../views/Team/TeamDetails.vue'),
     meta: {
       title: 'Team Details',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -45,7 +45,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "events" */ '../views/Events.vue'),
     meta: {
       title: 'Events ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   // {
@@ -125,7 +125,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "speakers" */ '../views/Speakers.vue'),
     meta: {
       title: 'Speakers ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -134,7 +134,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "speakers-details" */ '../views/Speakers/SpeakerDetails.vue'),
     meta: {
       title: 'Speakers ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -143,7 +143,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "volunteer" */ '../views/Volunteer.vue'),
     meta: {
       title: 'Volunteers ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -152,7 +152,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "partners" */ '../views/Partners.vue'),
     meta: {
       title: 'Partners ',
-      color: '#0277bd',
+      color: '#54b751d',
     }
   },
   {
@@ -161,7 +161,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "contact" */ '../views/Contact.vue'),
     meta: {
       title: 'Contact ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -170,7 +170,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "blogs" */ '../views/Blogs.vue'),
     meta: {
       title: 'Blogs ',
-      color: '#0277bd',
+      color: '#54b751',
     }
   },
   {
@@ -181,7 +181,7 @@ const routes = [{
     },
     meta: {
       title: `Redirect `,
-      color: "#0277bd",
+      color: "#54b751",
     }
   },
 ]

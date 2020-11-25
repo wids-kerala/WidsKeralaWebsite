@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" md="3" lg="3" sm="4" class>
-        <p class="google-font mb-0" style="font-size:150%;color:#53900F">What we do?</p>
+        <p class="google-font mb-0" style="font-size:150%;color:#54b751">What we do?</p>
         <p
           class="google-font mt-0"
           style="font-size:95%"

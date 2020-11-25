@@ -22,7 +22,7 @@
         >
           <b>
             Empowered Women
-            <span style="color: #28bd17;">Empower All</span>.
+            <span style="color: #52b04f;">Empower All</span>.
           </b>
         </p>
         <p class="google-font mt-0 mb-0" style="font-size:150%">{{config.generalConfig.name}}</p>
@@ -56,7 +56,7 @@
           aria-label="Learn More"
           rounded
           rel="noreferrer"
-          color="#28bd17"
+          color="#54b751"
           style="text-transform: capitalize;border-radius:5px;text-transform: capitalize;"
           outlined
           class="ml-0"

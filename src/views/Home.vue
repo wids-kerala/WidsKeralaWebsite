@@ -18,7 +18,7 @@
     </v-container>
 
     <v-container fluid class="pa-0 pt-5 my-0" >
-      <v-row justify="center" align="center" style="background:linear-gradient(#53900F,#0e5c17, #021f05)" class="py-5 my-0">
+      <v-row justify="center" align="center" style="background:linear-gradient(#449942,#048046,#006838)" class="py-0 my-0">
         <v-col md="12" lg="10" sm="11" xs="12" class="py-0" >
           <AboutCommunity />
         </v-col>
