@@ -6,8 +6,8 @@
           <v-col>
             <p class="google-font mb-0">
               Here are the top 10 blogs/articles written by us. You can find more blogs/articles on
-              <a :href="blogURL" style="text-decoration:none" target="_blank">Medium</a>
-            </p>
+              <a :href="blogURL" style="text-decoration:none; color:green;" target="_blank">Medium</a>
+            </p> 
             <!-- {{blogsData.feed.link}} -->
           </v-col>
         </v-row>

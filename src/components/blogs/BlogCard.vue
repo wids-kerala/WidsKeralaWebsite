@@ -27,7 +27,7 @@
             <p class="google-font mt-0 mb-0" style="font-size:90%;">{{data.data.pubDate}}</p>
             <p class="google-font mt-0 mb-4" style="font-size:90%;">{{data.data.author }}</p>
             <!-- <v-chip x-small v-for="(item,i) in data.data.categories" outlined :key="i">{{item}}</v-chip> -->
-            <v-btn target="_blank" text small :href="data.data.link" class="mb-0 mt-0 google-font" style="color:#1a73e8;text-decoration:none">Read</v-btn>
+            <v-btn target="_blank" text small :href="data.data.link" class="mb-0 mt-0 google-font" style="color:green;text-decoration:none">Read</v-btn>
           </div>
         
     </div>
