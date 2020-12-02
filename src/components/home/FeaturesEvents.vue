@@ -2,18 +2,18 @@
   <v-container fluid class="mb-1">
     <v-row align="center" justify="center" class>
       <v-col cols="12" md="12" lg="12" sm="12" class="mb-0">
-        <p class="google-font mb-0 mt-0" style="font-weight: 350;font-size:180%">
-          <b>
-            Our
-            <span style="color: #048046;">featured events</span>
-            &
-            <span style="color: #048046;">meetups</span>
-          </b>
-        </p>
+        <p class="google-font mb-0" style="font-size:150%;color: #048046;">Upcoming Events</p>
         <p
-          class="google-font mt-0 mb-0"
+          class="google-font mt-0"
           style="font-size:95%"
-        >Events are listed in reverse chronological order by date.</p>
+        >Our events are open to newbies, developers, data scientists, and organizations who are interested in Data Science.</p>
+        <v-row v-if="showLoader">
+          <v-col md="3" lg="3" sm="6" cols="12" class="pa-2" v-for="(item,i) in 3" :key="i">
+            <v-sheet :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`" class>
+              <v-skeleton-loader class="mx-auto" type="article"></v-skeleton-loader>
+            </v-sheet>
+          </v-col>
+        </v-row>
       </v-col>
       <v-col cols="12" md="12" lg="12" sm="12" class="mt-0 pt-0 pa-0">
         <v-container fluid class="py-0 my-0">
@@ -33,7 +33,10 @@
               :class="$vuetify.theme.dark == true?'darkModeCardFeatureEvent':'lightModeCardFeatureEvent'"
               class="pa-4 px-5 mx-3"
             >
-              <p class="google-font my-2">Not Found</p>
+              <p class="google-font mb-0" style="font-size:95%">
+              <v-icon>mdi-calendar-blank</v-icon>
+              <br />Thanks for your interest in WiDS Kerala conference. At this tme, there are no upcoming events. Please check back later for more information on our new events.
+            </p>
             </v-col>
           </v-row>
           <v-row v-else class="py-0 my-0 px-2">

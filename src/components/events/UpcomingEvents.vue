@@ -16,7 +16,7 @@
         <p
           class="google-font mt-0"
           style="font-size:95%"
-        >Our events are open to newbies, developers, managers, and organizations who are interested in Google's technologies or use them as part of their projects.</p>
+        >Our events are open to newbies, developers, data scientists, and organizations who are interested in Data Science.</p>
         <v-row v-if="showLoader">
           <v-col md="3" lg="3" sm="6" cols="12" class="pa-2" v-for="(item,i) in 3" :key="i">
             <v-sheet :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`" class>
@@ -52,7 +52,7 @@
           >
             <p class="google-font px-2 mb-0" style="font-size:140%">
               <v-icon>mdi-calendar-blank</v-icon>
-              <br />No Upcoming Events!
+              <br />Thanks for your interest in WiDS Kerala conference. At this tme, there are no upcoming events. Please check back later for more information on our new events.
             </p>
           </v-col>
         </v-row>

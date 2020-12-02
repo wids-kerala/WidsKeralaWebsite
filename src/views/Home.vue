@@ -36,7 +36,7 @@
     <v-container fluid class="pa-0 py-0" v-if="showFeatureEventStatus">
       <v-row justify="center" align="center" class="py-5" :class="this.$vuetify.theme.dark == true?'#222629':'grey lighten-4'">
         <v-col md="12" sm="11" lg="10" xs="12" class="py-0">
-          <featureEvents />
+          <events />
         </v-col>
       </v-row>
     </v-container>
@@ -71,7 +71,7 @@ export default {
     whatwedo:()=>import('@/components/home/WhatWeDo'),
     AboutCommunity:()=>import('@/components/home/AboutCommunity'),
     events:()=>import('@/components/home/Events'),
-    featureEvents:()=>import('@/components/home/FeaturesEvents'),
+    //featureEvents:()=>import('@/components/home/FeaturesEvents'),
     partners:()=>import('@/components/common/Partners')
   },
   data:()=>({
