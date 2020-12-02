@@ -5,9 +5,9 @@
         <p
           class="google-font mb-1"
           style="font-size:110%"
-        >Our events are open to newbies, developers, managers, and organizations who are interested in Google's technologies or use them as part of their projects.</p>
+        >Our events are open to newbies, developers, data scientists, and organizations who are interested in Data Science.</p>
         <p class="google-font">{{data.shortDescription}}</p>
-        <p class="google-font mt-5">Questions? Please contact {{data.email}}</p>
+        <p class="google-font mt-5">Questions? Please contact <a style="color:#048046;text-decoration: none;" :href="`mailto:${config.generalConfig.email}`">{{config.generalConfig.email}}</a></p>
         <CommunitySocialInfo :config="config"  class="mb-2"/>
         <span v-for="(item,i) in data.hashtags" :key="i" >
           <v-chip
