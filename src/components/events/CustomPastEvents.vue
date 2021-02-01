@@ -75,7 +75,7 @@ import { mapState } from 'vuex'
                 },
                 { text: 'Date', value: 'date' },
                 { text: 'Venue', value: 'venue.name' },
-                { text: 'See More', value: 'action' },
+                { text: 'Speaker', value: 'speaker.name' },
             ],
         }),
         mounted(){
